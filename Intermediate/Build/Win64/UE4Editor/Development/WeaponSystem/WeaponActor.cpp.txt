@@ -1,0 +1,3 @@
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Development\WeaponSystem\Definitions.WeaponSystem.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\Public\Weapon/WeaponActor.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponActor.generated.h

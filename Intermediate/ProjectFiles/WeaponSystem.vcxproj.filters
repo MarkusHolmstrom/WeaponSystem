@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\WeaponSystem.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{F970B4B8-80FC-484E-87DD-1C5AC813389D}</UniqueIdentifier>
+      <UniqueIdentifier>{0BB38C3F-B80E-4E0C-AE1B-7E3588DD94A0}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\WeaponSystemEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{3B3C251D-314E-4D5F-AFBD-7521DCB247BB}</UniqueIdentifier>
+      <UniqueIdentifier>{88CDAFF7-5AE8-4860-8FA2-9F73B3BBB4AC}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\WeaponSystem">
-      <UniqueIdentifier>{393B7C32-8ABC-4F7C-8BA0-38E7CBDB0700}</UniqueIdentifier>
+      <UniqueIdentifier>{C034DB82-02F3-40F7-AC44-FB83E0CEBDA3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem\WeaponSystem.Build.cs">
       <Filter>Source\WeaponSystem</Filter>
@@ -66,20 +68,26 @@
       <Filter>Source\WeaponSystem</Filter>
     </ClInclude>
     <Filter Include="Source\WeaponSystem\Private">
-      <UniqueIdentifier>{1DFACDB7-C8BB-4343-9D9B-D641732BB6FA}</UniqueIdentifier>
+      <UniqueIdentifier>{EF55F2F9-9966-4C92-BE2D-D00E46EF2594}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\WeaponSystem\Private\Weapon">
-      <UniqueIdentifier>{AC50F12C-6CAB-4D79-93D7-5786436DDA6B}</UniqueIdentifier>
+      <UniqueIdentifier>{16171F42-C067-4284-8D44-B509703E1070}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\WeaponActor.cpp">
+      <Filter>Source\WeaponSystem\Private\Weapon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\WeaponActorComponent.cpp">
       <Filter>Source\WeaponSystem\Private\Weapon</Filter>
     </ClCompile>
     <Filter Include="Source\WeaponSystem\Public">
-      <UniqueIdentifier>{E8B89F20-9FFE-4DB1-A156-BD07107D6EFF}</UniqueIdentifier>
+      <UniqueIdentifier>{BCCD203F-7001-443E-BA38-12BD9C7B6F2B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\WeaponSystem\Public\Weapon">
-      <UniqueIdentifier>{CE622F6D-B9E5-4CBF-BC79-A808800531C6}</UniqueIdentifier>
+      <UniqueIdentifier>{B59D37C7-B703-4447-BC56-667E41409DB5}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\WeaponActor.h">
+      <Filter>Source\WeaponSystem\Public\Weapon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\WeaponActorComponent.h">
       <Filter>Source\WeaponSystem\Public\Weapon</Filter>
     </ClInclude>
