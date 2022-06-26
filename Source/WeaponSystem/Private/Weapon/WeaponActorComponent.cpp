@@ -43,21 +43,17 @@ void UWeaponActorComponent::BeginPlay()
 	if (Components.Num() > 0)
 	{
 		for (auto& Comp : Components) {
-			if (Comp->GetName().Compare("HoldComponent") == 0)
+			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldComponent = Cast<USceneComponent>(Comp);
-			}
-			else if (Comp->GetName().Compare("CenterComponent") == 0)
-			{
-				CenterComponent = Cast<USceneComponent>(Comp);
 			}
 		}
 	}
 
-	if (!HoldComponent || !CenterComponent)
+	if (!HoldComponent)
 	{
 		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
-			"Error: Something is wrong, (comp(s) not found) can you hear me, Major Tom? x3")));
+			"Error: Something is wrong, (hold comp not found) can you hear me, Major Tom? x3")));
 	}
 
 	PitchMax = GetWorld()->GetFirstPlayerController()->PlayerCameraManager->ViewPitchMax;

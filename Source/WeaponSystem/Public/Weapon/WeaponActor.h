@@ -28,10 +28,6 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = Holding)
 	bool bHolding;
 
-	UPROPERTY(EditAnywhere, meta = (ToolTip =
-		"Control bool that will be set by Pickup component, default is false"))
-	bool bPlacedInHand = false;
-
 	UPROPERTY(VisibleAnywhere)
 	bool bGravity;
 	UPROPERTY(VisibleAnywhere)

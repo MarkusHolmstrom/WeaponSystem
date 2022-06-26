@@ -29,10 +29,6 @@ public:
 	bool bHoldOnToObject; //This makes sure the player cant drop the weapon when this is true
 
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = Holding,
-		meta = (ToolTip = "Centered component, for rotation only"))
-		USceneComponent* CenterComponent;
-
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = Holding,
 		meta = (ToolTip = "Should be found in instance, else generates an error"))
 		USceneComponent* HoldComponent;
 

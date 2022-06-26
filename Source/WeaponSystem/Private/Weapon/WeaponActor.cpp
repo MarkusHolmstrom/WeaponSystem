@@ -38,17 +38,26 @@ void AWeaponActor::BeginPlay()
 	if (Components.Num() > 0)
 	{
 		for (auto& Comp : Components) {
-			if (Comp->GetName().Compare("HoldComponent") == 0)
+			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldingComp = Cast<USceneComponent>(Comp);
+				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
+					"Hold comp found")));
+
 			}
-			else if (Comp->GetName().Compare("Pickup") == 0)
+			else if (Comp->GetName().Compare("WeaponActorComponent") == 0)
 			{
 				WeaponComp = Cast<UWeaponActorComponent>(Comp);
+				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
+					"weapon comp found")));
+
 			}
 			else if (Comp->GetName().Compare(MeshCompName) == 0)
 			{
 				MeshComp = Cast<USceneComponent>(Comp);
+				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
+					"Mesh comp found")));
+
 			}
 		}
 	}
@@ -91,7 +100,7 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 		return;
 	}
 
-	if (!bPlacedInHand && HoldingComp && bHolding)
+	if (HoldingComp && bHolding)
 	{
 		DefaultMesh->AttachToComponent(HoldingComp, 
 			FAttachmentTransformRules::KeepRelativeTransform);
@@ -99,7 +108,7 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 		SetActorRelativeLocation(FVector::ZeroVector);
 	}
 
-	if (bPlacedInHand && bHolding)
+	if (bHolding)
 	{
 		if (!PlayerPawn || !PlayerCamera)
 		{
@@ -123,19 +132,9 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 		{
 			NullCheck();
 		}
-		if (!PlayerCamera)
+		if (PlayerCamera && DefaultMesh->IsSimulatingPhysics())
 		{
-			GEngine->AddOnScreenDebugMessage(INDEX_NONE, 50.f, FColor::Red, FString::Printf(TEXT(
-				"Error: Something is wrong, (camera not found, not even after null check, what the fucking duces is going on here? forget about dropping this item, you need to find a camera, get your priorites straight!) can you hear me, Major Tom? x3")));
-		}
-		else
-		{
-			ForwardVector = PlayerCamera->GetForwardVector();
-		}
-
-		if (DefaultMesh->IsSimulatingPhysics())
-		{
-			DefaultMesh->SetPhysicsLinearVelocity(PlayerPawn->GetActorForwardVector() * DropForce);		// <- This doesn't crash (could be solved in other ways probably...)
+			DefaultMesh->SetPhysicsLinearVelocity(PlayerPawn->GetActorForwardVector() * DropForce);		
 		}
 	}
 }
