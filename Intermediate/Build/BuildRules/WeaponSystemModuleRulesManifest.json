@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Marku\\OneDrive\\Dokument\\Unreal Projects\\WeaponSystem\\Source\\WeaponSystem\\WeaponSystem.Build.cs",
+		"C:\\Users\\Marku\\OneDrive\\Dokument\\Unreal Projects\\WeaponSystem\\Source\\WeaponSystem.Target.cs",
+		"C:\\Users\\Marku\\OneDrive\\Dokument\\Unreal Projects\\WeaponSystem\\Source\\WeaponSystemEditor.Target.cs"
+	],
+	"EngineVersion": "4.27.2"
+}

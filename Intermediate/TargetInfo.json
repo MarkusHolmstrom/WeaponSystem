@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "WeaponSystem",
+			"Path": "C:\\Users\\Marku\\OneDrive\\Dokument\\Unreal Projects\\WeaponSystem\\Source\\WeaponSystem.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "WeaponSystemEditor",
+			"Path": "C:\\Users\\Marku\\OneDrive\\Dokument\\Unreal Projects\\WeaponSystem\\Source\\WeaponSystemEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

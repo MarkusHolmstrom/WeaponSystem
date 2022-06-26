@@ -1,0 +1,11 @@
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Development\WeaponSystem\Definitions.WeaponSystem.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\WeaponSystemProjectile.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponSystemProjectile.generated.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/ProjectileMovementComponent.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/MovementComponent.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\MovementComponent.generated.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ProjectileMovementComponent.generated.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/SphereComponent.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SphereComponent.generated.h

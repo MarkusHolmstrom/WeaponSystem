@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\WeaponSystem.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F970B4B8-80FC-484E-87DD-1C5AC813389D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\WeaponSystem.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\WeaponSystemEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{3B3C251D-314E-4D5F-AFBD-7521DCB247BB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\WeaponSystem">
+      <UniqueIdentifier>{393B7C32-8ABC-4F7C-8BA0-38E7CBDB0700}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\WeaponSystem\WeaponSystem.Build.cs">
+      <Filter>Source\WeaponSystem</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\WeaponSystem\WeaponSystem.cpp">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\WeaponSystem\WeaponSystem.h">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\WeaponSystem\WeaponSystemCharacter.cpp">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\WeaponSystem\WeaponSystemCharacter.h">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\WeaponSystem\WeaponSystemGameMode.cpp">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\WeaponSystem\WeaponSystemGameMode.h">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\WeaponSystem\WeaponSystemHUD.cpp">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\WeaponSystem\WeaponSystemHUD.h">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\WeaponSystem\WeaponSystemProjectile.cpp">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\WeaponSystem\WeaponSystemProjectile.h">
+      <Filter>Source\WeaponSystem</Filter>
+    </ClInclude>
+    <Filter Include="Source\WeaponSystem\Private">
+      <UniqueIdentifier>{1DFACDB7-C8BB-4343-9D9B-D641732BB6FA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\WeaponSystem\Private\Weapon">
+      <UniqueIdentifier>{AC50F12C-6CAB-4D79-93D7-5786436DDA6B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\WeaponActorComponent.cpp">
+      <Filter>Source\WeaponSystem\Private\Weapon</Filter>
+    </ClCompile>
+    <Filter Include="Source\WeaponSystem\Public">
+      <UniqueIdentifier>{E8B89F20-9FFE-4DB1-A156-BD07107D6EFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\WeaponSystem\Public\Weapon">
+      <UniqueIdentifier>{CE622F6D-B9E5-4CBF-BC79-A808800531C6}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\WeaponActorComponent.h">
+      <Filter>Source\WeaponSystem\Public\Weapon</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Development\WeaponSystem\Definitions.WeaponSystem.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\WeaponSystemGameMode.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponSystemGameMode.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\WeaponSystemHUD.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTextInfo.generated.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponSystemHUD.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\WeaponSystemCharacter.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponSystemCharacter.generated.h
