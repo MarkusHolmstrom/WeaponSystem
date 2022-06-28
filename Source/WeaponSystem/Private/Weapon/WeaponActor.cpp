@@ -35,29 +35,21 @@ void AWeaponActor::BeginPlay()
 	TArray<USceneComponent*> Components;
 	PlayerPawn->GetComponents(Components);
 
+	WeaponComp = PlayerPawn->GetComponentByClass(TSubclassOf<UWeaponActorComponent>());
+	
 	if (Components.Num() > 0)
 	{
 		for (auto& Comp : Components) {
+			/*GEngine->AddOnScreenDebugMessage(INDEX_NONE, 19.f, FColor::Yellow, 
+				Comp->GetName());*/
+
 			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldingComp = Cast<USceneComponent>(Comp);
-				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
-					"Hold comp found")));
-
-			}
-			else if (Comp->GetName().Compare("WeaponActorComponent") == 0)
-			{
-				WeaponComp = Cast<UWeaponActorComponent>(Comp);
-				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
-					"weapon comp found")));
-
 			}
 			else if (Comp->GetName().Compare(MeshCompName) == 0)
 			{
 				MeshComp = Cast<USceneComponent>(Comp);
-				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
-					"Mesh comp found")));
-
 			}
 		}
 	}

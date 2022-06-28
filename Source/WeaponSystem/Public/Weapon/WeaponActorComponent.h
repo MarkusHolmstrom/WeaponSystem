@@ -32,10 +32,6 @@ public:
 		meta = (ToolTip = "Should be found in instance, else generates an error"))
 		USceneComponent* HoldComponent;
 
-	UPROPERTY(EditAnywhere, Category = Holding, meta = (ToolTip =
-		"Default holding height from the player's waist position, Z"))
-		float HeightAngleOffset = 35.0f;
-
 	UPROPERTY(EditAnywhere, Category = Inspecting, meta = (ToolTip =
 		"Default holding distance for inspection, X, should be shorter than HoldDistance"))
 		float InspectDistance = 90.0f;

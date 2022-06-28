@@ -33,12 +33,12 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	bool bDropped;
 	UPROPERTY(EditAnywhere)
-	UWeaponActorComponent* WeaponComp;
+	UActorComponent* WeaponComp;
 
 	UPROPERTY(EditAnywhere)
 	USceneComponent* MeshComp;
 	UPROPERTY(EditAnywhere)
-	FString MeshCompName = "Mesh1P";
+	FString MeshCompName = "CharacterMesh1P";
 
 	UPROPERTY(EditAnywhere)
 	FName SocketName = "hand_lSocket";

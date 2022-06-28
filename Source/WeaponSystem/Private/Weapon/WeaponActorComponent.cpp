@@ -1,5 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+// grass and fire!!:
+// https://www.youtube.com/watch?v=dnGge9algcc
 
+// Flamethrower:
+// https://www.youtube.com/watch?v=GHFbW4IuxJA
 
 #include "Weapon/WeaponActorComponent.h"
 #include "DrawDebugHelpers.h"
@@ -46,6 +50,9 @@ void UWeaponActorComponent::BeginPlay()
 			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldComponent = Cast<USceneComponent>(Comp);
+				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Green, FString::Printf(TEXT(
+					"weapon comp found")));
+
 			}
 		}
 	}
@@ -71,6 +78,7 @@ void UWeaponActorComponent::BeginPlay()
 
 	if (InputComp)
 	{
+		InputComp->BindAction(TEXT("Interact"), IE_Pressed, this, &UWeaponActorComponent::OnAction);
 		InputComp->BindAction(TEXT("Inspect"), IE_Pressed, this, &UWeaponActorComponent::OnInspect);
 		InputComp->BindAction(TEXT("Inspect"), IE_Released, this, &UWeaponActorComponent::OnInspectReleased);
 	}

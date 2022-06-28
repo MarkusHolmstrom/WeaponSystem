@@ -134,17 +134,9 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActorComponent() {}
 		static void NewProp_bHoldOnToObject_SetBit(void* Obj);
 		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bHoldOnToObject;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CenterComponent_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CenterComponent;
-#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HoldComponent_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HoldComponent;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HeightAngleOffset_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_HeightAngleOffset;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_InspectDistance_MetaData[];
 #endif
@@ -247,15 +239,6 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActorComponent() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bHoldOnToObject = { "bHoldOnToObject", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(UWeaponActorComponent), &Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bHoldOnToObject_SetBit, METADATA_PARAMS(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bHoldOnToObject_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bHoldOnToObject_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_CenterComponent_MetaData[] = {
-		{ "Category", "Holding" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/Weapon/WeaponActorComponent.h" },
-		{ "ToolTip", "Centered component, for rotation only" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_CenterComponent = { "CenterComponent", nullptr, (EPropertyFlags)0x00100000000a000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWeaponActorComponent, CenterComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_CenterComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_CenterComponent_MetaData)) };
-#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HoldComponent_MetaData[] = {
 		{ "Category", "Holding" },
 		{ "EditInline", "true" },
@@ -264,14 +247,6 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActorComponent() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HoldComponent = { "HoldComponent", nullptr, (EPropertyFlags)0x00100000000a000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWeaponActorComponent, HoldComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HoldComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HoldComponent_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HeightAngleOffset_MetaData[] = {
-		{ "Category", "Holding" },
-		{ "ModuleRelativePath", "Public/Weapon/WeaponActorComponent.h" },
-		{ "ToolTip", "Default holding height from the player's waist position, Z" },
-	};
-#endif
-	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HeightAngleOffset = { "HeightAngleOffset", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UWeaponActorComponent, HeightAngleOffset), METADATA_PARAMS(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HeightAngleOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HeightAngleOffset_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_InspectDistance_MetaData[] = {
 		{ "Category", "Inspecting" },
@@ -385,9 +360,7 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActorComponent() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UWeaponActorComponent_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bPickupInRange,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_bHoldOnToObject,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_CenterComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HoldComponent,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_HeightAngleOffset,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_InspectDistance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_InspectingHeight,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWeaponActorComponent_Statics::NewProp_DistanceOffset,
@@ -430,7 +403,7 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActorComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UWeaponActorComponent, 2329964352);
+	IMPLEMENT_CLASS(UWeaponActorComponent, 1553909241);
 	template<> WEAPONSYSTEM_API UClass* StaticClass<UWeaponActorComponent>()
 	{
 		return UWeaponActorComponent::StaticClass();
