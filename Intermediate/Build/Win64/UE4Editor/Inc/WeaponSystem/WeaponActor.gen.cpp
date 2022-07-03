@@ -13,16 +13,111 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 // Cross Module References
+	WEAPONSYSTEM_API UEnum* Z_Construct_UEnum_WeaponSystem_EKindOfWeapon();
+	UPackage* Z_Construct_UPackage__Script_WeaponSystem();
 	WEAPONSYSTEM_API UClass* Z_Construct_UClass_AWeaponActor_NoRegister();
 	WEAPONSYSTEM_API UClass* Z_Construct_UClass_AWeaponActor();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
-	UPackage* Z_Construct_UPackage__Script_WeaponSystem();
+	WEAPONSYSTEM_API UClass* Z_Construct_UClass_UFlamethrower_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
-	ENGINE_API UClass* Z_Construct_UClass_UActorComponent_NoRegister();
+	WEAPONSYSTEM_API UClass* Z_Construct_UClass_UWeaponActorComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_APawn_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 // End Cross Module References
+	static UEnum* EKindOfWeapon_StaticEnum()
+	{
+		static UEnum* Singleton = nullptr;
+		if (!Singleton)
+		{
+			Singleton = GetStaticEnum(Z_Construct_UEnum_WeaponSystem_EKindOfWeapon, Z_Construct_UPackage__Script_WeaponSystem(), TEXT("EKindOfWeapon"));
+		}
+		return Singleton;
+	}
+	template<> WEAPONSYSTEM_API UEnum* StaticEnum<EKindOfWeapon>()
+	{
+		return EKindOfWeapon_StaticEnum();
+	}
+	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EKindOfWeapon(EKindOfWeapon_StaticEnum, TEXT("/Script/WeaponSystem"), TEXT("EKindOfWeapon"), false, nullptr, nullptr);
+	uint32 Get_Z_Construct_UEnum_WeaponSystem_EKindOfWeapon_Hash() { return 3660652332U; }
+	UEnum* Z_Construct_UEnum_WeaponSystem_EKindOfWeapon()
+	{
+#if WITH_HOT_RELOAD
+		UPackage* Outer = Z_Construct_UPackage__Script_WeaponSystem();
+		static UEnum* ReturnEnum = FindExistingEnumIfHotReloadOrDynamic(Outer, TEXT("EKindOfWeapon"), 0, Get_Z_Construct_UEnum_WeaponSystem_EKindOfWeapon_Hash(), false);
+#else
+		static UEnum* ReturnEnum = nullptr;
+#endif // WITH_HOT_RELOAD
+		if (!ReturnEnum)
+		{
+			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
+				{ "None", (int64)None },
+				{ "Flamethrower", (int64)Flamethrower },
+				{ "BlockGun", (int64)BlockGun },
+				{ "Bow", (int64)Bow },
+			};
+#if WITH_METADATA
+			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+				{ "BlockGun.DisplayName", "BlockGun" },
+				{ "BlockGun.Name", "BlockGun" },
+				{ "BlueprintType", "true" },
+				{ "Bow.DisplayName", "Bow" },
+				{ "Bow.Name", "Bow" },
+				{ "Flamethrower.DisplayName", "Flamethrower" },
+				{ "Flamethrower.Name", "Flamethrower" },
+				{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+				{ "None.DisplayName", "None" },
+				{ "None.Name", "None" },
+			};
+#endif
+			static const UE4CodeGen_Private::FEnumParams EnumParams = {
+				(UObject*(*)())Z_Construct_UPackage__Script_WeaponSystem,
+				nullptr,
+				"EKindOfWeapon",
+				"EKindOfWeapon",
+				Enumerators,
+				UE_ARRAY_COUNT(Enumerators),
+				RF_Public|RF_Transient|RF_MarkAsNative,
+				EEnumFlags::None,
+				UE4CodeGen_Private::EDynamicType::NotDynamic,
+				(uint8)UEnum::ECppForm::Regular,
+				METADATA_PARAMS(Enum_MetaDataParams, UE_ARRAY_COUNT(Enum_MetaDataParams))
+			};
+			UE4CodeGen_Private::ConstructUEnum(ReturnEnum, EnumParams);
+		}
+		return ReturnEnum;
+	}
+	DEFINE_FUNCTION(AWeaponActor::execGetAmmoRemaining)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(float*)Z_Param__Result=P_THIS->GetAmmoRemaining();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AWeaponActor::execReloading)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_DeltaTime);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Reloading(Z_Param_DeltaTime);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AWeaponActor::execStopFireWeapon)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_Damage);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->StopFireWeapon(Z_Param_Damage);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AWeaponActor::execFireWeapon)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_Damage);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FireWeapon(Z_Param_Damage);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AWeaponActor::execNullCheck)
 	{
 		P_FINISH;
@@ -53,14 +148,26 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		P_THIS->RotateActor();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AWeaponActor::execSetupWeaponStats)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetupWeaponStats();
+		P_NATIVE_END;
+	}
 	void AWeaponActor::StaticRegisterNativesAWeaponActor()
 	{
 		UClass* Class = AWeaponActor::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "AttachToPlayerMesh", &AWeaponActor::execAttachToPlayerMesh },
+			{ "FireWeapon", &AWeaponActor::execFireWeapon },
+			{ "GetAmmoRemaining", &AWeaponActor::execGetAmmoRemaining },
 			{ "Interact", &AWeaponActor::execInteract },
 			{ "NullCheck", &AWeaponActor::execNullCheck },
+			{ "Reloading", &AWeaponActor::execReloading },
 			{ "RotateActor", &AWeaponActor::execRotateActor },
+			{ "SetupWeaponStats", &AWeaponActor::execSetupWeaponStats },
+			{ "StopFireWeapon", &AWeaponActor::execStopFireWeapon },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -83,6 +190,70 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_AttachToPlayerMesh_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics
+	{
+		struct WeaponActor_eventFireWeapon_Parms
+		{
+			float Damage;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Damage;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::NewProp_Damage = { "Damage", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WeaponActor_eventFireWeapon_Parms, Damage), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::NewProp_Damage,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeaponActor, nullptr, "FireWeapon", nullptr, nullptr, sizeof(WeaponActor_eventFireWeapon_Parms), Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AWeaponActor_FireWeapon()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_FireWeapon_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics
+	{
+		struct WeaponActor_eventGetAmmoRemaining_Parms
+		{
+			float ReturnValue;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WeaponActor_eventGetAmmoRemaining_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeaponActor, nullptr, "GetAmmoRemaining", nullptr, nullptr, sizeof(WeaponActor_eventGetAmmoRemaining_Parms), Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -149,6 +320,38 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AWeaponActor_Reloading_Statics
+	{
+		struct WeaponActor_eventReloading_Parms
+		{
+			float DeltaTime;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_DeltaTime;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AWeaponActor_Reloading_Statics::NewProp_DeltaTime = { "DeltaTime", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WeaponActor_eventReloading_Parms, DeltaTime), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AWeaponActor_Reloading_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AWeaponActor_Reloading_Statics::NewProp_DeltaTime,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AWeaponActor_Reloading_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeaponActor_Reloading_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeaponActor, nullptr, "Reloading", nullptr, nullptr, sizeof(WeaponActor_eventReloading_Parms), Z_Construct_UFunction_AWeaponActor_Reloading_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_Reloading_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AWeaponActor_Reloading_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_Reloading_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AWeaponActor_Reloading()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_Reloading_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AWeaponActor_RotateActor_Statics
 	{
 #if WITH_METADATA
@@ -171,6 +374,60 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeaponActor, nullptr, "SetupWeaponStats", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AWeaponActor_SetupWeaponStats()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_SetupWeaponStats_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics
+	{
+		struct WeaponActor_eventStopFireWeapon_Parms
+		{
+			float Damage;
+		};
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Damage;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::NewProp_Damage = { "Damage", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(WeaponActor_eventStopFireWeapon_Parms, Damage), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::NewProp_Damage,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeaponActor, nullptr, "StopFireWeapon", nullptr, nullptr, sizeof(WeaponActor_eventStopFireWeapon_Parms), Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AWeaponActor_StopFireWeapon()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AWeaponActor_StopFireWeapon_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AWeaponActor_NoRegister()
 	{
 		return AWeaponActor::StaticClass();
@@ -182,6 +439,10 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FlamethrowerInstance_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_FlamethrowerInstance;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultMesh_MetaData[];
 #endif
@@ -201,14 +462,9 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		static void NewProp_bGravity_SetBit(void* Obj);
 		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bGravity;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bDropped_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_WAC_MetaData[];
 #endif
-		static void NewProp_bDropped_SetBit(void* Obj);
-		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bDropped;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_WeaponComp_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WeaponComp;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WAC;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MeshComp_MetaData[];
 #endif
@@ -229,6 +485,48 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PlayerCamera_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PlayerCamera;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_KindOfWeapon_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FBytePropertyParams NewProp_KindOfWeapon;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AmmoLeft_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_AmmoLeft;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AmmoCapacity_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_AmmoCapacity;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireRate_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bIsReloading_MetaData[];
+#endif
+		static void NewProp_bIsReloading_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bIsReloading;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ReloadingTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_ReloadingTime;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Timer_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Timer;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MagCapacity_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MagCapacity;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TotalAmmoLeft_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_TotalAmmoLeft;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bIsFiring_MetaData[];
+#endif
+		static void NewProp_bIsFiring_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bIsFiring;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -239,9 +537,14 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AWeaponActor_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AWeaponActor_AttachToPlayerMesh, "AttachToPlayerMesh" }, // 3962745798
+		{ &Z_Construct_UFunction_AWeaponActor_FireWeapon, "FireWeapon" }, // 1458862708
+		{ &Z_Construct_UFunction_AWeaponActor_GetAmmoRemaining, "GetAmmoRemaining" }, // 4252171540
 		{ &Z_Construct_UFunction_AWeaponActor_Interact, "Interact" }, // 1436843477
 		{ &Z_Construct_UFunction_AWeaponActor_NullCheck, "NullCheck" }, // 3230006242
+		{ &Z_Construct_UFunction_AWeaponActor_Reloading, "Reloading" }, // 3968771345
 		{ &Z_Construct_UFunction_AWeaponActor_RotateActor, "RotateActor" }, // 753198855
+		{ &Z_Construct_UFunction_AWeaponActor_SetupWeaponStats, "SetupWeaponStats" }, // 2052187330
+		{ &Z_Construct_UFunction_AWeaponActor_StopFireWeapon, "StopFireWeapon" }, // 2071667847
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::Class_MetaDataParams[] = {
@@ -250,13 +553,21 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_FlamethrowerInstance_MetaData[] = {
+		{ "Category", "Enums" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_FlamethrowerInstance = { "FlamethrowerInstance", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, FlamethrowerInstance), Z_Construct_UClass_UFlamethrower_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_FlamethrowerInstance_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_FlamethrowerInstance_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh_MetaData[] = {
 		{ "Category", "WeaponActor" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh = { "DefaultMesh", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, DefaultMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh = { "DefaultMesh", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, DefaultMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_HoldingComp_MetaData[] = {
 		{ "Category", "Holding" },
@@ -288,24 +599,15 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_bGravity = { "bGravity", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AWeaponActor), &Z_Construct_UClass_AWeaponActor_Statics::NewProp_bGravity_SetBit, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bGravity_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bGravity_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_WAC_MetaData[] = {
 		{ "Category", "WeaponActor" },
-		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
-	};
-#endif
-	void Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped_SetBit(void* Obj)
-	{
-		((AWeaponActor*)Obj)->bDropped = 1;
-	}
-	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped = { "bDropped", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AWeaponActor), &Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped_SetBit, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_WeaponComp_MetaData[] = {
-		{ "Category", "WeaponActor" },
+		{ "Comment", "/*UPROPERTY(EditAnywhere)\n\x09UActorComponent* PLayerHoldingComp;*/" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+		{ "ToolTip", "UPROPERTY(EditAnywhere)\n       UActorComponent* PLayerHoldingComp;" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_WeaponComp = { "WeaponComp", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, WeaponComp), Z_Construct_UClass_UActorComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_WeaponComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_WeaponComp_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_WAC = { "WAC", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, WAC), Z_Construct_UClass_UWeaponActorComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_WAC_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_WAC_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp_MetaData[] = {
 		{ "Category", "WeaponActor" },
@@ -313,7 +615,7 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp = { "MeshComp", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, MeshComp), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp = { "MeshComp", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, MeshComp), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshCompName_MetaData[] = {
 		{ "Category", "WeaponActor" },
@@ -343,18 +645,110 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_PlayerCamera = { "PlayerCamera", nullptr, (EPropertyFlags)0x00100000000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, PlayerCamera), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_PlayerCamera_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_PlayerCamera_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_KindOfWeapon_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FBytePropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_KindOfWeapon = { "KindOfWeapon", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, KindOfWeapon), Z_Construct_UEnum_WeaponSystem_EKindOfWeapon, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_KindOfWeapon_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_KindOfWeapon_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoLeft_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "Comment", "// Set in plueprint\n" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+		{ "ToolTip", "Set in plueprint" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoLeft = { "AmmoLeft", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, AmmoLeft), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoLeft_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoLeft_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoCapacity_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoCapacity = { "AmmoCapacity", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, AmmoCapacity), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoCapacity_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoCapacity_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_FireRate_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_FireRate = { "FireRate", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, FireRate), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_FireRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_FireRate_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	void Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading_SetBit(void* Obj)
+	{
+		((AWeaponActor*)Obj)->bIsReloading = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading = { "bIsReloading", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AWeaponActor), &Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading_SetBit, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_ReloadingTime_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_ReloadingTime = { "ReloadingTime", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, ReloadingTime), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_ReloadingTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_ReloadingTime_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_Timer_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_Timer = { "Timer", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, Timer), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_Timer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_Timer_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_MagCapacity_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_MagCapacity = { "MagCapacity", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, MagCapacity), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MagCapacity_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_MagCapacity_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_TotalAmmoLeft_MetaData[] = {
+		{ "Category", "WeaponInformation" },
+		{ "Comment", "//Number of magazines player can carry (MagCap x AmmoCap)\n" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+		{ "ToolTip", "Number of magazines player can carry (MagCap x AmmoCap)" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_TotalAmmoLeft = { "TotalAmmoLeft", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponActor, TotalAmmoLeft), METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_TotalAmmoLeft_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_TotalAmmoLeft_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring_MetaData[] = {
+		{ "Category", "Flamethrower" },
+		{ "ModuleRelativePath", "Public/Weapon/WeaponActor.h" },
+	};
+#endif
+	void Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring_SetBit(void* Obj)
+	{
+		((AWeaponActor*)Obj)->bIsFiring = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring = { "bIsFiring", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AWeaponActor), &Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring_SetBit, METADATA_PARAMS(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AWeaponActor_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_FlamethrowerInstance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_DefaultMesh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_HoldingComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_bHolding,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_bGravity,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_bDropped,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_WeaponComp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_WAC,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_MeshCompName,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_SocketName,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_PlayerPawn,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_PlayerCamera,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_KindOfWeapon,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoLeft,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_AmmoCapacity,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_FireRate,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsReloading,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_ReloadingTime,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_Timer,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_MagCapacity,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_TotalAmmoLeft,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponActor_Statics::NewProp_bIsFiring,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AWeaponActor_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AWeaponActor>::IsAbstract,
@@ -383,7 +777,7 @@ void EmptyLinkFunctionForGeneratedCodeWeaponActor() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWeaponActor, 19285365);
+	IMPLEMENT_CLASS(AWeaponActor, 3781622207);
 	template<> WEAPONSYSTEM_API UClass* StaticClass<AWeaponActor>()
 	{
 		return AWeaponActor::StaticClass();

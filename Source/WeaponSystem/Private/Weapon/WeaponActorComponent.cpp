@@ -18,7 +18,7 @@ UWeaponActorComponent::UWeaponActorComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	CurrentItem = nullptr;
+	CurrentWeapon = nullptr;
 	bCanMove = true;
 	bInspecting = false;
 
@@ -50,9 +50,6 @@ void UWeaponActorComponent::BeginPlay()
 			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldComponent = Cast<USceneComponent>(Comp);
-				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Green, FString::Printf(TEXT(
-					"weapon comp found")));
-
 			}
 		}
 	}
@@ -79,8 +76,13 @@ void UWeaponActorComponent::BeginPlay()
 	if (InputComp)
 	{
 		InputComp->BindAction(TEXT("Interact"), IE_Pressed, this, &UWeaponActorComponent::OnAction);
+		InputComp->BindAction(TEXT("Fire"), IE_Pressed, this, &UWeaponActorComponent::OnFireWeapon);
+		InputComp->BindAction(TEXT("Fire"), IE_Released, this, &UWeaponActorComponent::OnReleaseFire);
+		
 		InputComp->BindAction(TEXT("Inspect"), IE_Pressed, this, &UWeaponActorComponent::OnInspect);
 		InputComp->BindAction(TEXT("Inspect"), IE_Released, this, &UWeaponActorComponent::OnInspectReleased);
+		InputComp->BindAction(TEXT("Reload"), IE_Pressed, this, &UWeaponActorComponent::StartReloading);
+		// TODO fixa reload knapp sync o kolla vad som händer när vapen släpps, varför försvinna?
 	}
 	else
 	{
@@ -110,22 +112,19 @@ void UWeaponActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 			// Is player aiming towards a weapon?
 			if (Hit.GetActor()->GetClass()->IsChildOf(AWeaponActor::StaticClass()))
 			{
-				if (CurrentItem == nullptr) // needs to be nested
+				if (CurrentWeapon == nullptr) // needs to be nested
 				{
-					OnItemInSight.Broadcast();
-					CurrentItem = Cast<AWeaponActor>(Hit.GetActor());
+					CurrentWeapon = Cast<AWeaponActor>(Hit.GetActor());
 				}
 			}
-			else if (CurrentItem != nullptr)
+			else
 			{
-				OnItemOutOfSight.Broadcast();
-				CurrentItem = nullptr;
+				CurrentWeapon = nullptr;
 			}
 		}
-		else if (CurrentItem != nullptr)
+		else if (CurrentWeapon != nullptr)
 		{
-			OnItemOutOfSight.Broadcast();
-			CurrentItem = nullptr;
+			CurrentWeapon = nullptr;
 		}
 	}
 
@@ -137,7 +136,7 @@ void UWeaponActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 			CameraComponent->SetFieldOfView(FMath::Lerp(CameraComponent->FieldOfView, DefaultCameraFOV, 0.1f));
 			GetWorld()->GetFirstPlayerController()->PlayerCameraManager->ViewPitchMax = 179.9000002f;
 			GetWorld()->GetFirstPlayerController()->PlayerCameraManager->ViewPitchMin = -179.9000002f;
-			CurrentItem->RotateActor();
+			CurrentWeapon->RotateActor();
 		}
 		else
 		{
@@ -153,7 +152,7 @@ void UWeaponActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 
 void UWeaponActorComponent::OnAction()
 {
-	if (CurrentItem && !bInspecting && !bHoldOnToObject)
+	if (CurrentWeapon && !bInspecting && !bHoldOnToObject)
 	{
 		ToggleItemPickup();
 	}
@@ -187,6 +186,81 @@ void UWeaponActorComponent::OnInspectReleased()
 	}
 }
 
+void UWeaponActorComponent::OnFireWeapon()
+{
+	if (bInspecting || !CurrentWeapon)
+	{
+		return;
+	}
+	if (!CurrentWeapon->bIsReloading && HaveAmmoLeft())
+	{
+		OnFireWeapon(DamageFromWeapon);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Cyan, FString::Printf(TEXT(
+			"Reloading....")));
+	}
+}
+
+bool UWeaponActorComponent::HaveAmmoLeft()
+{
+	if (CurrentWeapon)
+	{
+		if (CurrentWeapon->AmmoLeft <= 0)
+		{
+			CheckStartReloading(CurrentWeapon->ReloadingTime);
+		}
+		else
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void UWeaponActorComponent::OnFireWeapon(float Damage)
+{
+	if (CurrentWeapon)
+	{
+		if (!CurrentWeapon->bIsReloading)
+		{
+			OnFire.ExecuteIfBound(Damage);
+			/*GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
+				"Fire weapon!")));*/
+
+		}
+	}
+	else // Gets called when LMB and no weapon in hand
+	{
+		OnFire.Unbind();
+	}
+}
+
+void UWeaponActorComponent::OnReleaseFire()
+{
+	OnRelease.ExecuteIfBound(0);
+	/*GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
+		"stop Fire weapon!")));*/
+
+}
+
+void UWeaponActorComponent::CheckStartReloading(float ReloadTime)
+{
+	if (CurrentWeapon)
+	{
+		CurrentWeapon->bIsReloading = true;
+	}
+}
+
+void UWeaponActorComponent::StartReloading()
+{
+	if (CurrentWeapon)
+	{
+		CheckStartReloading(CurrentWeapon->ReloadingTime);
+	}
+}
+
 void UWeaponActorComponent::ToggleMovement()
 {
 	bCanMove = !bCanMove;
@@ -200,31 +274,22 @@ void UWeaponActorComponent::ToggleMovement()
 	}
 }
 
-void UWeaponActorComponent::OnItemInSightInternal()
+void UWeaponActorComponent::OnFireInternal()
 {
-	// gets read in blueprints for icon in crosshair to show up
+	
 }
 
-void UWeaponActorComponent::OnItemOutOfSightInternal()
-{
-	// gets read in blueprints for icon in crosshair to disappear
-}
 
 void UWeaponActorComponent::ToggleItemPickup()
 {
-	if (CurrentItem)
+	if (CurrentWeapon)
 	{
 		bHoldingItem = !bHoldingItem;
-		CurrentItem->Interact(bHoldingItem, ThrowAwayForce);
+		CurrentWeapon->Interact(bHoldingItem, ThrowAwayForce);
 
 		if (!bHoldingItem)
 		{
-			CurrentItem = nullptr;
-			OnItemOutOfSight.Broadcast();
-		}
-		else
-		{
-			OnItemOutOfSight.Broadcast();
+			CurrentWeapon = nullptr;
 		}
 	}
 }

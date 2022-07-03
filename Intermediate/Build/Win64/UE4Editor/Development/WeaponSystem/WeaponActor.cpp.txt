@@ -5,6 +5,8 @@ C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CameraComponent.
 C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponActor.generated.h
 C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\Public\Weapon/WeaponActorComponent.h
 C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\WeaponActorComponent.generated.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem\Public\Weapon/Flamethrower.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\Flamethrower.generated.h
 C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
 C:\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h

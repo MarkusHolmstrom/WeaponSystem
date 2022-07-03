@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\WeaponSystem.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{0BB38C3F-B80E-4E0C-AE1B-7E3588DD94A0}</UniqueIdentifier>
+      <UniqueIdentifier>{380D0A1E-870E-41FD-BAB0-CDD7A788A70A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{88CDAFF7-5AE8-4860-8FA2-9F73B3BBB4AC}</UniqueIdentifier>
+      <UniqueIdentifier>{C4336E7D-61DD-4E4C-AD6D-E7339A36FDA5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\WeaponSystem">
-      <UniqueIdentifier>{C034DB82-02F3-40F7-AC44-FB83E0CEBDA3}</UniqueIdentifier>
+      <UniqueIdentifier>{92107548-7BCD-47F5-9A16-0CA140899557}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem\WeaponSystem.Build.cs">
       <Filter>Source\WeaponSystem</Filter>
@@ -68,11 +68,14 @@
       <Filter>Source\WeaponSystem</Filter>
     </ClInclude>
     <Filter Include="Source\WeaponSystem\Private">
-      <UniqueIdentifier>{EF55F2F9-9966-4C92-BE2D-D00E46EF2594}</UniqueIdentifier>
+      <UniqueIdentifier>{15166A12-DF59-49B9-A19B-2F724DAE1CD5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\WeaponSystem\Private\Weapon">
-      <UniqueIdentifier>{16171F42-C067-4284-8D44-B509703E1070}</UniqueIdentifier>
+      <UniqueIdentifier>{FD7CA7D3-F30C-428F-A925-7885DBCB6C56}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\Flamethrower.cpp">
+      <Filter>Source\WeaponSystem\Private\Weapon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\WeaponActor.cpp">
       <Filter>Source\WeaponSystem\Private\Weapon</Filter>
     </ClCompile>
@@ -80,11 +83,14 @@
       <Filter>Source\WeaponSystem\Private\Weapon</Filter>
     </ClCompile>
     <Filter Include="Source\WeaponSystem\Public">
-      <UniqueIdentifier>{BCCD203F-7001-443E-BA38-12BD9C7B6F2B}</UniqueIdentifier>
+      <UniqueIdentifier>{22ECE4B6-1945-479E-8E6A-54B1A73CF2CB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\WeaponSystem\Public\Weapon">
-      <UniqueIdentifier>{B59D37C7-B703-4447-BC56-667E41409DB5}</UniqueIdentifier>
+      <UniqueIdentifier>{CBA531A8-D0A1-471A-ABBD-79CA7634A8BC}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\Flamethrower.h">
+      <Filter>Source\WeaponSystem\Public\Weapon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\WeaponActor.h">
       <Filter>Source\WeaponSystem\Public\Weapon</Filter>
     </ClInclude>

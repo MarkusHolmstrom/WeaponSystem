@@ -11,22 +11,18 @@
 #endif
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeWeaponSystem_init() {}
-	WEAPONSYSTEM_API UFunction* Z_Construct_UDelegateFunction_WeaponSystem_ItemSightDelegate__DelegateSignature();
 	UPackage* Z_Construct_UPackage__Script_WeaponSystem()
 	{
 		static UPackage* ReturnPackage = nullptr;
 		if (!ReturnPackage)
 		{
-			static UObject* (*const SingletonFuncArray[])() = {
-				(UObject* (*)())Z_Construct_UDelegateFunction_WeaponSystem_ItemSightDelegate__DelegateSignature,
-			};
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/WeaponSystem",
-				SingletonFuncArray,
-				UE_ARRAY_COUNT(SingletonFuncArray),
+				nullptr,
+				0,
 				PKG_CompiledIn | 0x00000000,
-				0xD64CC31E,
-				0x61628FAE,
+				0x86304A28,
+				0x174B90AC,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

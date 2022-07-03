@@ -13,7 +13,7 @@
 class USceneComponent;
 class AWeaponActor;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FItemSightDelegate);
+DECLARE_DELEGATE_OneParam(FFireDelegate, float);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class WEAPONSYSTEM_API UWeaponActorComponent : public UActorComponent
@@ -50,7 +50,7 @@ public:
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	AWeaponActor* CurrentItem;
+	AWeaponActor* CurrentWeapon;
 
 	UPROPERTY(EditAnywhere, meta = (ToolTip = "Should be found in instance, else generates an error"))
 	UInputComponent* InputComp;
@@ -85,7 +85,10 @@ public:
 		float SearchOffset = 5.0f;
 
 	UPROPERTY(EditAnywhere, Category = Holding)
-		float PickupReach = 400.0f;
+		float PickupReach = 500.0f;
+
+	UPROPERTY(EditAnywhere, Category = Weapon)
+	float DamageFromWeapon = 50;
 
 	// Sets default values for this component's properties
 	UWeaponActorComponent();
@@ -99,10 +102,8 @@ protected:
 
 	void ToggleMovement();
 
-	// Internal Events
-	virtual void OnItemInSightInternal();
-
-	virtual void OnItemOutOfSightInternal();
+	// Internal Event
+	virtual void OnFireInternal();
 
 
 public:	
@@ -111,17 +112,42 @@ public:
 
 
 	UFUNCTION(BlueprintCallable)
-		void ToggleItemPickup();
+	void ToggleItemPickup();
 
 	UFUNCTION(BlueprintCallable)
-		void OnAction();
+	void OnAction();
+
+	UFUNCTION()
+	void OnFireWeapon();
+	void OnFireWeapon(float Damage);
+
+	UFUNCTION()
+	bool HaveAmmoLeft();
+
+	UFUNCTION()
+	void OnReleaseFire();
+
+	UFUNCTION()
+	void CheckStartReloading(float ReloadTime);
+	UFUNCTION()
+	void StartReloading();
+
 	// End public functions
 
 	// Events
-	UPROPERTY(BlueprintAssignable, Category = "Events")
+	/*UPROPERTY(BlueprintAssignable, Category = "Events")
 		FItemSightDelegate OnItemInSight;
 
 	UPROPERTY(BlueprintAssignable, Category = "Events")
-		FItemSightDelegate OnItemOutOfSight;
+		FItemSightDelegate OnItemOutOfSight;*/
+
+	FFireDelegate OnFire;
+	FFireDelegate OnRelease;
+
+	////DECLARE_EVENT(FLayerViewModel, FFireEvent)
+	////FFireEvent& OnFire() { return FireEvent; }
+
+private:
+	///*FFireEvent FireEvent;*/
 
 };

@@ -12,14 +12,33 @@ class USceneComponent;
 class UStaticMeshComponent;
 class UBoxComponent;
 class UWeaponActorComponent;
+class UFlamethrower;
+
+	UENUM(BlueprintType)
+	enum EKindOfWeapon
+	{
+		None			UMETA(DisplayName = "None"),
+		Flamethrower    UMETA(DisplayName = "Flamethrower"),
+		BlockGun		UMETA(DisplayName = "BlockGun"),
+		Bow				UMETA(DisplayName = "Bow"),
+	};
+
 
 UCLASS()
 class WEAPONSYSTEM_API AWeaponActor : public AActor
 {
+	// base class for weapons, handles how they get picked up and have default values
+
 	GENERATED_BODY()
 	
 public:	
-	UPROPERTY(VisibleAnywhere)
+
+	UPROPERTY(VisibleAnywhere, Category = Enums)
+	UFlamethrower* FlamethrowerInstance;
+
+
+
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* DefaultMesh;
 
 	UPROPERTY(VisibleAnywhere, Category = Holding)
@@ -30,12 +49,14 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	bool bGravity;
-	UPROPERTY(VisibleAnywhere)
-	bool bDropped;
-	UPROPERTY(EditAnywhere)
-	UActorComponent* WeaponComp;
+	/*UPROPERTY(VisibleAnywhere)
+	bool bDropped;*/
+	/*UPROPERTY(EditAnywhere)
+	UActorComponent* PLayerHoldingComp;*/
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
+	UWeaponActorComponent* WAC;
+	UPROPERTY(VisibleAnywhere)
 	USceneComponent* MeshComp;
 	UPROPERTY(EditAnywhere)
 	FString MeshCompName = "CharacterMesh1P";
@@ -49,6 +70,28 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCamera;
 	FVector ForwardVector;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = WeaponInformation)
+	TEnumAsByte<EKindOfWeapon> KindOfWeapon; // Set in plueprint
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	float AmmoLeft = 32;
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	int AmmoCapacity = 32;
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	float FireRate = 1.0f;
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	bool bIsReloading = false;
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	float ReloadingTime = 1.0f;
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	float Timer = 0.0f;
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	int MagCapacity = 4; //Number of magazines player can carry (MagCap x AmmoCap)
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	float TotalAmmoLeft = 128.0f;
+
+	UPROPERTY(VisibleAnywhere, Category = Flamethrower)
+	bool bIsFiring = false;
 	// End variables
 
 	// Sets default values for this actor's properties
@@ -57,6 +100,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UFUNCTION()
+	void SetupWeaponStats();
+	void ToggleCanShoot();
+	void ShootFromComp();
 
 public:	
 	// Called every frame
@@ -74,5 +121,15 @@ public:
 
 	UFUNCTION()
 	void NullCheck();
+
+	UFUNCTION()
+	void FireWeapon(float Damage);
+	UFUNCTION()
+	void StopFireWeapon(float Damage);
+
+	UFUNCTION()
+	void Reloading(float DeltaTime);
+	UFUNCTION()
+	float GetAmmoRemaining();
 
 };

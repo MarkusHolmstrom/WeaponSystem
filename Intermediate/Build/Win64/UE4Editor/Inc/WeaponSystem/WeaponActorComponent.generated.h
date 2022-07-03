@@ -13,22 +13,25 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define WEAPONSYSTEM_WeaponActorComponent_generated_h
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActorComponent_h_16_DELEGATE \
-static inline void FItemSightDelegate_DelegateWrapper(const FMulticastScriptDelegate& ItemSightDelegate) \
-{ \
-	ItemSightDelegate.ProcessMulticastDelegate<UObject>(NULL); \
-}
-
-
 #define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActorComponent_h_21_SPARSE_DATA
 #define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActorComponent_h_21_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execStartReloading); \
+	DECLARE_FUNCTION(execCheckStartReloading); \
+	DECLARE_FUNCTION(execOnReleaseFire); \
+	DECLARE_FUNCTION(execHaveAmmoLeft); \
+	DECLARE_FUNCTION(execOnFireWeapon); \
 	DECLARE_FUNCTION(execOnAction); \
 	DECLARE_FUNCTION(execToggleItemPickup);
 
 
 #define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActorComponent_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execStartReloading); \
+	DECLARE_FUNCTION(execCheckStartReloading); \
+	DECLARE_FUNCTION(execOnReleaseFire); \
+	DECLARE_FUNCTION(execHaveAmmoLeft); \
+	DECLARE_FUNCTION(execOnFireWeapon); \
 	DECLARE_FUNCTION(execOnAction); \
 	DECLARE_FUNCTION(execToggleItemPickup);
 

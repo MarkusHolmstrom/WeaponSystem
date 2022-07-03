@@ -1,0 +1,5 @@
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Development\WeaponSystem\Definitions.WeaponSystem.h
+C:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Source\WeaponSystem/Public/Weapon/Flamethrower.h
+C:\Users\Marku\OneDrive\Dokument\Unreal Projects\WeaponSystem\Intermediate\Build\Win64\UE4Editor\Inc\WeaponSystem\Flamethrower.generated.h
