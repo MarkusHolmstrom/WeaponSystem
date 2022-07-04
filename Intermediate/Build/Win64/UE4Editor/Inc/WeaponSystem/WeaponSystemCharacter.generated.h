@@ -60,8 +60,6 @@ public: \
 
 #define WeaponSystem_Source_WeaponSystem_WeaponSystemCharacter_h_20_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__Mesh1P() { return STRUCT_OFFSET(AWeaponSystemCharacter, Mesh1P); } \
-	FORCEINLINE static uint32 __PPO__FP_Gun() { return STRUCT_OFFSET(AWeaponSystemCharacter, FP_Gun); } \
-	FORCEINLINE static uint32 __PPO__FP_MuzzleLocation() { return STRUCT_OFFSET(AWeaponSystemCharacter, FP_MuzzleLocation); } \
 	FORCEINLINE static uint32 __PPO__VR_MuzzleLocation() { return STRUCT_OFFSET(AWeaponSystemCharacter, VR_MuzzleLocation); } \
 	FORCEINLINE static uint32 __PPO__FirstPersonCameraComponent() { return STRUCT_OFFSET(AWeaponSystemCharacter, FirstPersonCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__R_MotionController() { return STRUCT_OFFSET(AWeaponSystemCharacter, R_MotionController); } \

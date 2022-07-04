@@ -16,7 +16,7 @@ UFlamethrower::UFlamethrower()
 	
 	FlameParticleComp = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("FlameParticles"));
 	
-	FlameParticleComp->SetRelativeLocation(FVector(80, 0, 10));
+	//FlameParticleComp->SetRelativeLocation(FVector(80, 0, 10));
 	FlameParticleComp->bAutoActivate = false;
 }
 
@@ -39,11 +39,13 @@ void UFlamethrower::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 	// ...
 }
+
 bool UFlamethrower::ToggleCanFire()
 {
 	bCanFire = !bCanFire;
 	return bCanFire;
 }
+
 // https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Delegates/Events/
 void UFlamethrower::OnFire()
 {

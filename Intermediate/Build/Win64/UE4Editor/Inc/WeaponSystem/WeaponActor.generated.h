@@ -13,8 +13,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define WEAPONSYSTEM_WeaponActor_generated_h
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_SPARSE_DATA
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_RPC_WRAPPERS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_SPARSE_DATA
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execGetAmmoRemaining); \
 	DECLARE_FUNCTION(execReloading); \
@@ -27,7 +27,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execSetupWeaponStats);
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_RPC_WRAPPERS_NO_PURE_DECLS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execGetAmmoRemaining); \
 	DECLARE_FUNCTION(execReloading); \
@@ -40,7 +40,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execSetupWeaponStats);
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_INCLASS_NO_PURE_DECLS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAWeaponActor(); \
 	friend struct Z_Construct_UClass_AWeaponActor_Statics; \
@@ -49,7 +49,7 @@ public: \
 	DECLARE_SERIALIZER(AWeaponActor)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_INCLASS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_INCLASS \
 private: \
 	static void StaticRegisterNativesAWeaponActor(); \
 	friend struct Z_Construct_UClass_AWeaponActor_Statics; \
@@ -58,7 +58,7 @@ public: \
 	DECLARE_SERIALIZER(AWeaponActor)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_STANDARD_CONSTRUCTORS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AWeaponActor(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AWeaponActor) \
@@ -71,7 +71,7 @@ private: \
 public:
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_ENHANCED_CONSTRUCTORS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AWeaponActor(AWeaponActor&&); \
@@ -82,28 +82,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AWeaponActor)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_PRIVATE_PROPERTY_OFFSET
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_27_PROLOG
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_GENERATED_BODY_LEGACY \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_PRIVATE_PROPERTY_OFFSET
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_28_PROLOG
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_PRIVATE_PROPERTY_OFFSET \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_SPARSE_DATA \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_RPC_WRAPPERS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_INCLASS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_STANDARD_CONSTRUCTORS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_PRIVATE_PROPERTY_OFFSET \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_SPARSE_DATA \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_RPC_WRAPPERS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_INCLASS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_GENERATED_BODY \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_PRIVATE_PROPERTY_OFFSET \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_SPARSE_DATA \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_RPC_WRAPPERS_NO_PURE_DECLS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_INCLASS_NO_PURE_DECLS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_32_ENHANCED_CONSTRUCTORS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_PRIVATE_PROPERTY_OFFSET \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_SPARSE_DATA \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_RPC_WRAPPERS_NO_PURE_DECLS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_INCLASS_NO_PURE_DECLS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_WeaponActor_h_33_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

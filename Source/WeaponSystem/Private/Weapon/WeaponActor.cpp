@@ -51,7 +51,9 @@ void AWeaponActor::BeginPlay()
 			}
 			else if (Comp->GetName().Compare(MeshCompName) == 0)
 			{
-				MeshComp = Cast<USceneComponent>(Comp);
+				MeshComp = Cast<USkeletalMeshComponent>(Comp);
+				GEngine->AddOnScreenDebugMessage(INDEX_NONE, 19.f, FColor::Yellow,
+					Comp->GetName());
 			}
 		}
 	}
@@ -87,6 +89,7 @@ void AWeaponActor::ToggleCanShoot()
 	case EKindOfWeapon::None:
 		break;
 	case EKindOfWeapon::Flamethrower:
+		bIsFiring = false;
 		FlamethrowerInstance->ToggleCanFire();
 		break;
 	case EKindOfWeapon::BlockGun:
@@ -134,6 +137,10 @@ void AWeaponActor::Tick(float DeltaTime)
 			FlamethrowerInstance->OnFire();
 			AmmoLeft -= FireRate; 
 			TotalAmmoLeft -= FireRate;
+			if (AmmoLeft <= 0)
+			{
+				bIsReloading = true;
+			}
 			GEngine->AddOnScreenDebugMessage(INDEX_NONE, 19.f, FColor::Yellow,
 				FString::Printf(TEXT("%f"), AmmoLeft));
 		}
@@ -146,11 +153,6 @@ void AWeaponActor::Tick(float DeltaTime)
 	if (bIsReloading)
 	{
 		Reloading(DeltaTime);
-	}
-	
-	if (bHolding && HoldingComp)
-	{
-		SetActorLocationAndRotation(HoldingComp->GetComponentLocation(), HoldingComp->GetComponentRotation());
 	}
 }
 
@@ -182,11 +184,6 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 
 	if (HoldingComp && bHolding)
 	{
-		DefaultMesh->AttachToComponent(HoldingComp, 
-			FAttachmentTransformRules::KeepRelativeTransform);
-
-		SetActorRelativeLocation(FVector::ZeroVector);
-
 		if (WAC)
 		{
 			WAC->OnFire.BindUObject(this, &AWeaponActor::FireWeapon);
@@ -197,10 +194,7 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 		// https://www.coursera.org/lecture/intermediate-object-oriented-programming--unreal-games/single-delegates-in-unreal-bgxJ6
 		
 		ToggleCanShoot();
-	}
 
-	if (bHolding)
-	{
 		if (!PlayerPawn || !PlayerCamera)
 		{
 			NullCheck();
@@ -216,27 +210,20 @@ void AWeaponActor::Interact(bool bPickingUp, int DropForce)
 	{
 		ToggleCanShoot();
 		WAC->OnFire.Unbind();
-		if (DefaultMesh->IsAttachedTo(HoldingComp))
-		{
-			DefaultMesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-		}
 
-		if (!PlayerPawn || !PlayerCamera)
-		{
-			NullCheck();
-		}
-		if (PlayerCamera && DefaultMesh->IsSimulatingPhysics())
-		{
-			DefaultMesh->SetPhysicsLinearVelocity(PlayerPawn->GetActorForwardVector() * DropForce);		
-		}
+		DefaultMesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+		
 	}
 }
 
 void AWeaponActor::AttachToPlayerMesh()
 {
 	DefaultMesh->AttachToComponent(MeshComp,
-		FAttachmentTransformRules::SnapToTargetIncludingScale, SocketName);
-
+		FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+	
+	SetActorRelativeRotation(FQuat(RelRot));
+	SetActorRelativeLocation(RelLoc);
+	
 }
 
 void AWeaponActor::NullCheck()
@@ -261,10 +248,19 @@ void AWeaponActor::StopFireWeapon(float Damage)
 void AWeaponActor::Reloading(float DeltaTime)
 {
 	StopFireWeapon(0);
+	// Avoid reloading if there is no more mags left
+	if (TotalAmmoLeft < AmmoCapacity)
+	{
+		//loopar här a vngn anledning..
+		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Green, FString::Printf(TEXT(
+			"Out of mags, man....")));
+		return;
+	}
 	Timer += DeltaTime;
 	if (Timer >= ReloadingTime)
 	{
 		bIsReloading = false;
+		Timer = 0;
 		AmmoLeft = GetAmmoRemaining();
 		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Green, FString::Printf(TEXT(
 			"Done Reloading....")));

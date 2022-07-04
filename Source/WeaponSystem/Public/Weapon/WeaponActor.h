@@ -10,6 +10,7 @@
 
 class USceneComponent;
 class UStaticMeshComponent;
+class USkeletalMeshComponent;
 class UBoxComponent;
 class UWeaponActorComponent;
 class UFlamethrower;
@@ -57,9 +58,9 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UWeaponActorComponent* WAC;
 	UPROPERTY(VisibleAnywhere)
-	USceneComponent* MeshComp;
+	USkeletalMeshComponent* MeshComp;
 	UPROPERTY(EditAnywhere)
-	FString MeshCompName = "CharacterMesh1P";
+	FString MeshCompName = "CharacterMesh1P"; 
 
 	UPROPERTY(EditAnywhere)
 	FName SocketName = "hand_lSocket";
@@ -72,7 +73,7 @@ public:
 	FVector ForwardVector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = WeaponInformation)
-	TEnumAsByte<EKindOfWeapon> KindOfWeapon; // Set in plueprint
+	TEnumAsByte<EKindOfWeapon> KindOfWeapon; // Set in blueprint
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
 	float AmmoLeft = 32;
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
@@ -82,18 +83,26 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
 	bool bIsReloading = false;
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
-	float ReloadingTime = 1.0f;
+	float ReloadingTime = 4.0f;
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
 	float Timer = 0.0f;
+	//Number of magazines player can carry (MagCap x AmmoCap)
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
-	int MagCapacity = 4; //Number of magazines player can carry (MagCap x AmmoCap)
+	int MagCapacity = 4; 
+	// Set as (MagCapacity x AmmoCapacity) in BeginPlay if values changed in editor
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
 	float TotalAmmoLeft = 128.0f;
 
 	UPROPERTY(VisibleAnywhere, Category = Flamethrower)
 	bool bIsFiring = false;
+	// relative rotation if weapon BP is rotated wrong way
+	UPROPERTY(EditAnywhere, Category = WeaponPosInformation)
+	FRotator RelRot = FRotator(0.0f, 0.0f, 0.0f);
+	// relative position if weapon is a bit away from players hands
+	UPROPERTY(EditAnywhere, Category = WeaponPosInformation)
+	FVector RelLoc = FVector(0.0f, 0.0f, 0.0f);
 	// End variables
-
+	
 	// Sets default values for this actor's properties
 	AWeaponActor();
 

@@ -82,7 +82,6 @@ void UWeaponActorComponent::BeginPlay()
 		InputComp->BindAction(TEXT("Inspect"), IE_Pressed, this, &UWeaponActorComponent::OnInspect);
 		InputComp->BindAction(TEXT("Inspect"), IE_Released, this, &UWeaponActorComponent::OnInspectReleased);
 		InputComp->BindAction(TEXT("Reload"), IE_Pressed, this, &UWeaponActorComponent::StartReloading);
-		// TODO fixa reload knapp sync o kolla vad som händer när vapen släpps, varför försvinna?
 	}
 	else
 	{
