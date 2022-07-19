@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\WeaponSystem.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{380D0A1E-870E-41FD-BAB0-CDD7A788A70A}</UniqueIdentifier>
+      <UniqueIdentifier>{DD51B7E9-470E-4930-B6F3-8B21B6402385}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{C4336E7D-61DD-4E4C-AD6D-E7339A36FDA5}</UniqueIdentifier>
+      <UniqueIdentifier>{23C1A127-496C-4154-A71F-96BD8B9CAC9F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\WeaponSystem">
-      <UniqueIdentifier>{92107548-7BCD-47F5-9A16-0CA140899557}</UniqueIdentifier>
+      <UniqueIdentifier>{9E5E1B7B-F926-4426-807C-C588A0135144}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\WeaponSystem\WeaponSystem.Build.cs">
       <Filter>Source\WeaponSystem</Filter>
@@ -68,11 +68,44 @@
       <Filter>Source\WeaponSystem</Filter>
     </ClInclude>
     <Filter Include="Source\WeaponSystem\Private">
-      <UniqueIdentifier>{15166A12-DF59-49B9-A19B-2F724DAE1CD5}</UniqueIdentifier>
+      <UniqueIdentifier>{D90BE6E2-A9C1-4D03-A5B3-2BE74A1B77CE}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\BlockActor.cpp">
+      <Filter>Source\WeaponSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\FirePawn.cpp">
+      <Filter>Source\WeaponSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\FPSHUD.cpp">
+      <Filter>Source\WeaponSystem\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\WeaponSystem\Private\Interactables">
+      <UniqueIdentifier>{A46549D4-BA58-46D0-AD14-D1B79E4BE04E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Interactables\FireInteractableActor.cpp">
+      <Filter>Source\WeaponSystem\Private\Interactables</Filter>
+    </ClCompile>
+    <Filter Include="Source\WeaponSystem\Private\Projectiles">
+      <UniqueIdentifier>{7AF75B87-86E7-46AC-85A4-A164089F0AFB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Projectiles\Arrow.cpp">
+      <Filter>Source\WeaponSystem\Private\Projectiles</Filter>
+    </ClCompile>
+    <Filter Include="Source\WeaponSystem\Private\UI">
+      <UniqueIdentifier>{80B12981-0373-4D8D-8C34-12E8D0BC69F5}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\UI\HUDWidget.cpp">
+      <Filter>Source\WeaponSystem\Private\UI</Filter>
+    </ClCompile>
     <Filter Include="Source\WeaponSystem\Private\Weapon">
-      <UniqueIdentifier>{FD7CA7D3-F30C-428F-A925-7885DBCB6C56}</UniqueIdentifier>
+      <UniqueIdentifier>{2AFAEA2E-F7BF-4167-AD97-9A6A77B94BDB}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\BlockGun.cpp">
+      <Filter>Source\WeaponSystem\Private\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\Bow.cpp">
+      <Filter>Source\WeaponSystem\Private\Weapon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WeaponSystem\Private\Weapon\Flamethrower.cpp">
       <Filter>Source\WeaponSystem\Private\Weapon</Filter>
     </ClCompile>
@@ -83,11 +116,44 @@
       <Filter>Source\WeaponSystem\Private\Weapon</Filter>
     </ClCompile>
     <Filter Include="Source\WeaponSystem\Public">
-      <UniqueIdentifier>{22ECE4B6-1945-479E-8E6A-54B1A73CF2CB}</UniqueIdentifier>
+      <UniqueIdentifier>{FC8871FF-15B5-4020-903D-5BC98CEE9FDA}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\BlockActor.h">
+      <Filter>Source\WeaponSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\FirePawn.h">
+      <Filter>Source\WeaponSystem\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\FPSHUD.h">
+      <Filter>Source\WeaponSystem\Public</Filter>
+    </ClInclude>
+    <Filter Include="Source\WeaponSystem\Public\Interactables">
+      <UniqueIdentifier>{B3C6E2B6-21BC-4715-A121-18435043AE12}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Interactables\FireInteractableActor.h">
+      <Filter>Source\WeaponSystem\Public\Interactables</Filter>
+    </ClInclude>
+    <Filter Include="Source\WeaponSystem\Public\Projectiles">
+      <UniqueIdentifier>{933BA844-C073-4B89-8C5A-1E38084C8457}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Projectiles\Arrow.h">
+      <Filter>Source\WeaponSystem\Public\Projectiles</Filter>
+    </ClInclude>
+    <Filter Include="Source\WeaponSystem\Public\UI">
+      <UniqueIdentifier>{A09EB458-9EE8-4100-8FD1-7172DB42217A}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\UI\HUDWidget.h">
+      <Filter>Source\WeaponSystem\Public\UI</Filter>
+    </ClInclude>
     <Filter Include="Source\WeaponSystem\Public\Weapon">
-      <UniqueIdentifier>{CBA531A8-D0A1-471A-ABBD-79CA7634A8BC}</UniqueIdentifier>
+      <UniqueIdentifier>{4B096E0F-BE47-457B-9297-4A5C18F890C7}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\BlockGun.h">
+      <Filter>Source\WeaponSystem\Public\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\Bow.h">
+      <Filter>Source\WeaponSystem\Public\Weapon</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\WeaponSystem\Public\Weapon\Flamethrower.h">
       <Filter>Source\WeaponSystem\Public\Weapon</Filter>
     </ClInclude>

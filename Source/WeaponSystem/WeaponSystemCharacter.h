@@ -13,6 +13,8 @@ class UCameraComponent;
 class UMotionControllerComponent;
 class UAnimMontage;
 class USoundBase;
+class UHUDWidget;
+class UUserWidget;
 
 UCLASS(config=Game)
 class AWeaponSystemCharacter : public ACharacter
@@ -23,6 +25,16 @@ class AWeaponSystemCharacter : public ACharacter
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	USkeletalMeshComponent* Mesh1P;
 
+	// My stuff
+public:
+	// Reference UMG Asset in the Editor
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+	TSubclassOf<UHUDWidget> wHUD;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Widgets")
+	UHUDWidget* HUD;
+
+	/// end my stuff
+private:
 	/** Gun mesh: 1st person view (seen only by self) */
 	/*UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 	USkeletalMeshComponent* FP_Gun;*/

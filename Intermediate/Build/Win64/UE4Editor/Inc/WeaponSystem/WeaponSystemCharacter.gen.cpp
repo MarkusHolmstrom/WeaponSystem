@@ -18,11 +18,12 @@ void EmptyLinkFunctionForGeneratedCodeWeaponSystemCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_WeaponSystem();
 	ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	WEAPONSYSTEM_API UClass* Z_Construct_UClass_UHUDWidget_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	HEADMOUNTEDDISPLAY_API UClass* Z_Construct_UClass_UMotionControllerComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
-	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	WEAPONSYSTEM_API UClass* Z_Construct_UClass_AWeaponSystemProjectile_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
@@ -44,6 +45,14 @@ void EmptyLinkFunctionForGeneratedCodeWeaponSystemCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Mesh1P_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Mesh1P;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_wHUD_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_wHUD;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HUD_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HUD;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_VR_MuzzleLocation_MetaData[];
 #endif
@@ -114,6 +123,23 @@ void EmptyLinkFunctionForGeneratedCodeWeaponSystemCharacter() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_Mesh1P = { "Mesh1P", nullptr, (EPropertyFlags)0x00400000000b0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponSystemCharacter, Mesh1P), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_Mesh1P_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_Mesh1P_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_wHUD_MetaData[] = {
+		{ "Category", "Widgets" },
+		{ "Comment", "// Reference UMG Asset in the Editor\n" },
+		{ "ModuleRelativePath", "WeaponSystemCharacter.h" },
+		{ "ToolTip", "Reference UMG Asset in the Editor" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_wHUD = { "wHUD", nullptr, (EPropertyFlags)0x0014000000000005, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponSystemCharacter, wHUD), Z_Construct_UClass_UHUDWidget_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_wHUD_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_wHUD_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_HUD_MetaData[] = {
+		{ "Category", "Widgets" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "WeaponSystemCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_HUD = { "HUD", nullptr, (EPropertyFlags)0x00100000000a000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AWeaponSystemCharacter, HUD), Z_Construct_UClass_UHUDWidget_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_HUD_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_HUD_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_VR_MuzzleLocation_MetaData[] = {
 		{ "Category", "Mesh" },
@@ -226,6 +252,8 @@ void EmptyLinkFunctionForGeneratedCodeWeaponSystemCharacter() {}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_bUsingMotionControllers = { "bUsingMotionControllers", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool , RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(uint8), sizeof(AWeaponSystemCharacter), &Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_bUsingMotionControllers_SetBit, METADATA_PARAMS(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_bUsingMotionControllers_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_bUsingMotionControllers_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AWeaponSystemCharacter_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_Mesh1P,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_wHUD,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_HUD,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_VR_MuzzleLocation,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_FirstPersonCameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AWeaponSystemCharacter_Statics::NewProp_R_MotionController,
@@ -265,7 +293,7 @@ void EmptyLinkFunctionForGeneratedCodeWeaponSystemCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWeaponSystemCharacter, 723014860);
+	IMPLEMENT_CLASS(AWeaponSystemCharacter, 3261408727);
 	template<> WEAPONSYSTEM_API UClass* StaticClass<AWeaponSystemCharacter>()
 	{
 		return AWeaponSystemCharacter::StaticClass();

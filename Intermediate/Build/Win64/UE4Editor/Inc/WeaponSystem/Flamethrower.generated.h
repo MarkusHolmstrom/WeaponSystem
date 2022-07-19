@@ -8,27 +8,32 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FTransform;
 #ifdef WEAPONSYSTEM_Flamethrower_generated_h
 #error "Flamethrower.generated.h already included, missing '#pragma once' in Flamethrower.h"
 #endif
 #define WEAPONSYSTEM_Flamethrower_generated_h
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_SPARSE_DATA
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_RPC_WRAPPERS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_SPARSE_DATA
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execGetSpawnTransform); \
+	DECLARE_FUNCTION(execSpawnFires); \
 	DECLARE_FUNCTION(execStopFire); \
 	DECLARE_FUNCTION(execOnFire); \
 	DECLARE_FUNCTION(execToggleCanFire);
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execGetSpawnTransform); \
+	DECLARE_FUNCTION(execSpawnFires); \
 	DECLARE_FUNCTION(execStopFire); \
 	DECLARE_FUNCTION(execOnFire); \
 	DECLARE_FUNCTION(execToggleCanFire);
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_INCLASS_NO_PURE_DECLS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUFlamethrower(); \
 	friend struct Z_Construct_UClass_UFlamethrower_Statics; \
@@ -37,7 +42,7 @@ public: \
 	DECLARE_SERIALIZER(UFlamethrower)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_INCLASS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_INCLASS \
 private: \
 	static void StaticRegisterNativesUFlamethrower(); \
 	friend struct Z_Construct_UClass_UFlamethrower_Statics; \
@@ -46,7 +51,7 @@ public: \
 	DECLARE_SERIALIZER(UFlamethrower)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_STANDARD_CONSTRUCTORS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UFlamethrower(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UFlamethrower) \
@@ -59,7 +64,7 @@ private: \
 public:
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_ENHANCED_CONSTRUCTORS \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UFlamethrower(UFlamethrower&&); \
@@ -70,28 +75,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UFlamethrower)
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_PRIVATE_PROPERTY_OFFSET
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_13_PROLOG
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_GENERATED_BODY_LEGACY \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_PRIVATE_PROPERTY_OFFSET
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_15_PROLOG
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_PRIVATE_PROPERTY_OFFSET \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_SPARSE_DATA \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_RPC_WRAPPERS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_INCLASS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_STANDARD_CONSTRUCTORS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_PRIVATE_PROPERTY_OFFSET \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_SPARSE_DATA \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_RPC_WRAPPERS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_INCLASS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_GENERATED_BODY \
+#define WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_PRIVATE_PROPERTY_OFFSET \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_SPARSE_DATA \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_INCLASS_NO_PURE_DECLS \
-	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_16_ENHANCED_CONSTRUCTORS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_PRIVATE_PROPERTY_OFFSET \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_SPARSE_DATA \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_INCLASS_NO_PURE_DECLS \
+	WeaponSystem_Source_WeaponSystem_Public_Weapon_Flamethrower_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

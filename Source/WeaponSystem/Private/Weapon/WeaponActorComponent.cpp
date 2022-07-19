@@ -46,7 +46,8 @@ void UWeaponActorComponent::BeginPlay()
 
 	if (Components.Num() > 0)
 	{
-		for (auto& Comp : Components) {
+		for (auto& Comp : Components) 
+		{
 			if (Comp->GetName().Compare("HoldingComponent") == 0)
 			{
 				HoldComponent = Cast<USceneComponent>(Comp);
@@ -111,10 +112,8 @@ void UWeaponActorComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 			// Is player aiming towards a weapon?
 			if (Hit.GetActor()->GetClass()->IsChildOf(AWeaponActor::StaticClass()))
 			{
-				if (CurrentWeapon == nullptr) // needs to be nested
-				{
-					CurrentWeapon = Cast<AWeaponActor>(Hit.GetActor());
-				}
+				CurrentWeapon = Cast<AWeaponActor>(Hit.GetActor());
+				
 			}
 			else
 			{
@@ -198,7 +197,7 @@ void UWeaponActorComponent::OnFireWeapon()
 	else
 	{
 		GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Cyan, FString::Printf(TEXT(
-			"Reloading....")));
+			"Currently Reloading....")));
 	}
 }
 

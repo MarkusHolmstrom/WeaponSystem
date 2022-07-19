@@ -14,15 +14,19 @@ class USkeletalMeshComponent;
 class UBoxComponent;
 class UWeaponActorComponent;
 class UFlamethrower;
+class UBlockGun;
+class UHUDWidget;
+class APlayerController;
+class AWeaponSystemCharacter;
 
-	UENUM(BlueprintType)
-	enum EKindOfWeapon
-	{
-		None			UMETA(DisplayName = "None"),
-		Flamethrower    UMETA(DisplayName = "Flamethrower"),
-		BlockGun		UMETA(DisplayName = "BlockGun"),
-		Bow				UMETA(DisplayName = "Bow"),
-	};
+UENUM(BlueprintType)
+enum EKindOfWeapon
+{
+	None			UMETA(DisplayName = "None"),
+	Flamethrower    UMETA(DisplayName = "Flamethrower"),
+	BlockGun		UMETA(DisplayName = "BlockGun"),
+	Bow				UMETA(DisplayName = "Bow"),
+};
 
 
 UCLASS()
@@ -33,11 +37,17 @@ class WEAPONSYSTEM_API AWeaponActor : public AActor
 	GENERATED_BODY()
 	
 public:	
-
+	// Weapon classes:
 	UPROPERTY(VisibleAnywhere, Category = Enums)
 	UFlamethrower* FlamethrowerInstance;
+	UPROPERTY(VisibleAnywhere, Category = Enums)
+	UBlockGun* BlockGunInstance;
 
 
+	//
+
+	UPROPERTY(EditAnywhere)
+	AWeaponSystemCharacter* WSC;
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* DefaultMesh;
@@ -50,10 +60,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	bool bGravity;
-	/*UPROPERTY(VisibleAnywhere)
-	bool bDropped;*/
-	/*UPROPERTY(EditAnywhere)
-	UActorComponent* PLayerHoldingComp;*/
 
 	UPROPERTY(VisibleAnywhere)
 	UWeaponActorComponent* WAC;
@@ -71,9 +77,9 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* PlayerCamera;
 	FVector ForwardVector;
-
+	// Set in blueprint
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = WeaponInformation)
-	TEnumAsByte<EKindOfWeapon> KindOfWeapon; // Set in blueprint
+	TEnumAsByte<EKindOfWeapon> KindOfWeapon; 
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
 	float AmmoLeft = 32;
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
@@ -83,7 +89,9 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
 	bool bIsReloading = false;
 	UPROPERTY(EditAnywhere, Category = WeaponInformation)
-	float ReloadingTime = 4.0f;
+	float ReloadingTime = 8.0f;
+	UPROPERTY(EditAnywhere, Category = WeaponInformation)
+	float MaxReloadingTime = 8.0f;
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
 	float Timer = 0.0f;
 	//Number of magazines player can carry (MagCap x AmmoCap)
@@ -91,7 +99,13 @@ public:
 	int MagCapacity = 4; 
 	// Set as (MagCapacity x AmmoCapacity) in BeginPlay if values changed in editor
 	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
-	float TotalAmmoLeft = 128.0f;
+	float RemaingAmmo = 96.0f;
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	int AmmoToLoad = 0;
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	int TargetAmmo = 0;
+	UPROPERTY(VisibleAnywhere, Category = WeaponInformation)
+	int TargetTotalAmmo = 0;
 
 	UPROPERTY(VisibleAnywhere, Category = Flamethrower)
 	bool bIsFiring = false;
@@ -101,6 +115,12 @@ public:
 	// relative position if weapon is a bit away from players hands
 	UPROPERTY(EditAnywhere, Category = WeaponPosInformation)
 	FVector RelLoc = FVector(0.0f, 0.0f, 0.0f);
+
+	UPROPERTY(VisibleAnywhere, Category = HUD)
+	UHUDWidget* HUDWidget;
+
+
+
 	// End variables
 	
 	// Sets default values for this actor's properties
@@ -113,17 +133,27 @@ protected:
 	void SetupWeaponStats();
 	void ToggleCanShoot();
 	void ShootFromComp();
-
+	UFUNCTION()
+	void UpdateAmmoLeft();
+	UFUNCTION()
+	void UpdateHUDAmmo(float Left, float TotalLeft);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+	float GetReloadingTime(float ReloadTime, float Left, float Capacity);
+	UFUNCTION()
+	UHUDWidget* GetHUDWidget();
 
 	UFUNCTION()
 	void RotateActor();
 
 	UFUNCTION()
 	void Interact(bool bPickingUp, int ThrowAwayForce);
+
+	UFUNCTION()
+	FString GetWeaponName();
 
 	UFUNCTION()
 	void AttachToPlayerMesh();
@@ -138,6 +168,8 @@ public:
 
 	UFUNCTION()
 	void Reloading(float DeltaTime);
+	UFUNCTION()
+	void UpdateDuringReloading(float TimeLeft, float DeltaTime, float CurLoad, float TotAmmoLeft);
 	UFUNCTION()
 	float GetAmmoRemaining();
 

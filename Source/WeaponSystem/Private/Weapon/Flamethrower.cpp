@@ -3,6 +3,7 @@
 
 #include "Weapon/Flamethrower.h"
 #include "Weapon/WeaponActor.h"
+#include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/SceneComponent.h"
@@ -16,7 +17,7 @@ UFlamethrower::UFlamethrower()
 	
 	FlameParticleComp = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("FlameParticles"));
 	
-	//FlameParticleComp->SetRelativeLocation(FVector(80, 0, 10));
+	FlameParticleComp->SetRelativeLocation(FVector(80, 0, 10));
 	FlameParticleComp->bAutoActivate = false;
 }
 
@@ -29,6 +30,9 @@ void UFlamethrower::BeginPlay()
 	// Safeplay
 	FlameParticleComp->SetRelativeLocation(FVector(80, 0, 10));
 	FlameParticleComp->Template = ParticleSystem;
+
+	PlayerPawn = UGameplayStatics::GetPlayerPawn(this, 0);
+	PlayerCamera = PlayerPawn->FindComponentByClass<UCameraComponent>();
 }
 
 
@@ -51,7 +55,9 @@ void UFlamethrower::OnFire()
 {
 	if (bCanFire && FlameParticleComp)
 	{
+		SpawnFires();
 		FlameParticleComp->ActivateSystem(true);
+		// TODO Make camera move slowly in left to right?
 		/*GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Red, FString::Printf(TEXT(
 			"Fire")));*/
 	}
@@ -65,5 +71,32 @@ void UFlamethrower::StopFire()
 		/*GEngine->AddOnScreenDebugMessage(INDEX_NONE, 5.f, FColor::Blue, FString::Printf(TEXT(
 			"No Fire")));*/
 	}
+}
+
+void UFlamethrower::SpawnFires()
+{
+	Timer += 0.1f;
+	RandomNr += AddPerFrameAtRandomNr;
+	if (RandomNr >= 2)
+	{
+		RandomNr = MinSpawnDistFromPlayer;
+	}
+	if (Timer >= FireInterval)
+	{
+		Timer = 0;
+		if (Fire)
+		{
+			FTransform TempTrans = GetSpawnTransform();
+			GetWorld()->SpawnActor(Fire, &TempTrans);
+		}
+	}
+}
+
+FTransform UFlamethrower::GetSpawnTransform()
+{
+	FTransform SpawnTrans = PlayerPawn->GetActorTransform();
+	SpawnTrans.AddToTranslation(PlayerCamera->GetForwardVector() * 
+		MiddleFireDistance * RandomNr);
+	return SpawnTrans;
 }
 
